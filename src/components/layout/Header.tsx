@@ -1,7 +1,7 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
-import Link from "next/link";
+import { Box, Flex, Heading } from '@chakra-ui/react'
+import Link from 'next/link'
 
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from './ThemeToggle'
 
 const Header = () => {
   return (
@@ -14,7 +14,7 @@ const Header = () => {
         <ThemeToggle />
       </Box>
     </Flex>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
