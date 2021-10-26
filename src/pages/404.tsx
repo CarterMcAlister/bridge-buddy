@@ -3,13 +3,12 @@ import {
   Button,
   Heading,
   Image,
-  Text,
   Link as ChakraLink,
+  Text,
   useColorMode,
 } from '@chakra-ui/react'
+import { MotionBox } from 'components/motion/Box'
 import Link from 'next/link'
-
-import MotionBox from 'components/motion/Box'
 
 const Page404 = () => {
   const { colorMode } = useColorMode()
