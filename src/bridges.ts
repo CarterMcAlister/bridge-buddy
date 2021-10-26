@@ -103,7 +103,7 @@ export const chains = {
   },
 }
 
-type ChainId = keyof typeof chains
+export type ChainId = keyof typeof chains
 
 export interface Bridge {
   name: string

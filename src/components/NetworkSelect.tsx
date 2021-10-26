@@ -1,21 +1,26 @@
-import { Center, HStack, Icon, Text, VStack } from '@chakra-ui/react'
+import { Center, HStack, IconButton, Text, VStack } from '@chakra-ui/react'
 import { BridgeItem } from 'components/BridgeItem'
 import { Card } from 'components/Card'
 import { ChainPicker } from 'components/ChainPicker'
 import React, { useMemo, useState } from 'react'
 import { CgArrowRight } from 'react-icons/cg'
-import { bridges, Chain } from '../bridges'
+import { bridges, Chain, ChainId } from '../bridges'
 
 export const NetworkSelect: React.FC = () => {
   const [chainOne, setChainOne] = useState<Chain | undefined>(undefined)
   const [chainTwo, setChainTwo] = useState<Chain | undefined>(undefined)
 
+  const swapSelections = () => {
+    setChainOne(chainTwo)
+    setChainTwo(chainOne)
+  }
+
   const filteredBridges = useMemo(
     () =>
       bridges.filter(
         (bridge) =>
-          (!chainOne || bridge.chains.includes(chainOne?.symbol)) &&
-          (!chainTwo || bridge.chains.includes(chainTwo?.symbol))
+          (!chainOne || bridge.chains.includes(chainOne?.symbol as ChainId)) &&
+          (!chainTwo || bridge.chains.includes(chainTwo?.symbol as ChainId))
       ),
     [chainOne, chainTwo]
   )
@@ -27,13 +32,23 @@ export const NetworkSelect: React.FC = () => {
           <HStack spacing={4}>
             <Text>From</Text>
             <ChainPicker selectedChain={chainOne} onSelect={setChainOne} />
-            <Icon as={CgArrowRight} fontSize="1.5em" />
+            <IconButton
+              aria-label="Swap"
+              icon={<CgArrowRight />}
+              onClick={swapSelections}
+              variant="unstyled"
+              fontSize="1.5em"
+            />
+
             <Text>To</Text>
             <ChainPicker selectedChain={chainTwo} onSelect={setChainTwo} />
           </HStack>
         </Center>
       </Card>
-      <VStack w="100%" pt="6">
+      <Text pt="6" pb="2">
+        {filteredBridges.length} bridge{filteredBridges.length === 1 ? '' : 's'}
+      </Text>
+      <VStack w="100%">
         {filteredBridges.map((bridge) => (
           <BridgeItem bridge={bridge} key={bridge.name} />
         ))}

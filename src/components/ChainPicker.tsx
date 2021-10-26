@@ -45,6 +45,11 @@ export const ChainPicker = ({
     onClose()
   }
 
+  const onCloseModal = () => {
+    setFilterText(undefined)
+    onClose()
+  }
+
   return (
     <>
       <MotionBox
@@ -62,10 +67,10 @@ export const ChainPicker = ({
             mr={2}
           />
         )}
-        {selectedChain?.name ?? 'Select network'}
+        {selectedChain?.name ?? 'Select chain'}
       </MotionBox>
 
-      <Modal isOpen={isOpen} onClose={onClose} scrollBehavior="inside">
+      <Modal isOpen={isOpen} onClose={onCloseModal} scrollBehavior="inside">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Select a chain</ModalHeader>
@@ -76,7 +81,7 @@ export const ChainPicker = ({
               onChange={(e) => setFilterText(e.target.value)}
               placeholder="Search name"
             />
-            <VStack pt={4} align="flex-start">
+            <VStack pt={4} spacing={4} align="flex-start">
               {chainList.map((chain) => (
                 <ChainOption
                   chain={chain}
@@ -90,9 +95,6 @@ export const ChainPicker = ({
           <ModalFooter>
             <Button variant="ghost" onClick={() => onClick(undefined)}>
               Clear
-            </Button>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
             </Button>
           </ModalFooter>
         </ModalContent>
@@ -109,7 +111,12 @@ export const ChainOption = ({
   onClick: (chain: Chain) => void
 }) => {
   return (
-    <HStack cursor="pointer" align="center" onClick={() => onClick(chain)}>
+    <HStack
+      cursor="pointer"
+      align="center"
+      w="100%"
+      onClick={() => onClick(chain)}
+    >
       <Image src={chain.logo} rounded="full" w="40px" h="40px" />
       <Box pl="1">
         <Text>{chain.name}</Text>
