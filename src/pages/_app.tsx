@@ -1,17 +1,16 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { ChakraProvider } from '@chakra-ui/react'
 import { EmotionCache } from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
+import '@fontsource/lexend/latin.css'
+import Layout from 'components/layout'
+import 'focus-visible/dist/focus-visible'
 import { DefaultSeo } from 'next-seo'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import '@fontsource/lexend/latin.css'
-
-import defaultSEOConfig from '../../next-seo.config'
-import Layout from 'components/layout'
 import createEmotionCache from 'styles/createEmotionCache'
 import customTheme from 'styles/customTheme'
 import 'styles/globals.css'
+import defaultSEOConfig from '../../next-seo.config'
 
 const clientSideEmotionCache = createEmotionCache()
 

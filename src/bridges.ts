@@ -1,3 +1,9 @@
+export interface Chain {
+  name: string
+  symbol: string
+  logo: string
+}
+
 export const chains = {
   ETH: {
     name: 'Ethereum',

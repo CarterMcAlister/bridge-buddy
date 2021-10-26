@@ -3,5 +3,10 @@
     "sznm/react",
     "plugin:react/jsx-runtime",
     "plugin:@next/next/recommended"
-  ]
+  ],
+  "rules": {
+    "react/prop-types": "off",
+    "import/order": "off",
+    "@typescript-eslint/no-use-before-define": "off"
+  }
 }
