@@ -6,17 +6,16 @@
 import createEmotionServer from '@emotion/server/create-instance'
 // eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, {
-  Html,
+  DocumentContext,
   Head,
+  Html,
   Main,
   NextScript,
-  DocumentContext,
 } from 'next/document'
 import * as React from 'react'
-
 import createEmotionCache from 'styles/createEmotionCache'
 
-const APP_NAME = 'nextarter-chakra'
+const APP_NAME = 'Bridge Buddy'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

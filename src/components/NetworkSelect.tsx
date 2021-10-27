@@ -1,19 +1,15 @@
-import { Center, HStack, IconButton, Text, VStack } from '@chakra-ui/react'
+import { Center, HStack, Icon, Text, VStack } from '@chakra-ui/react'
 import { BridgeItem } from 'components/BridgeItem'
 import { Card } from 'components/Card'
 import { ChainPicker } from 'components/ChainPicker'
 import React, { useMemo, useState } from 'react'
 import { CgArrowRight } from 'react-icons/cg'
-import { bridges, Chain, ChainId } from '../bridges'
+import { bridges } from '../bridges'
+import { Chain, ChainId } from '../chains'
 
 export const NetworkSelect: React.FC = () => {
   const [chainOne, setChainOne] = useState<Chain | undefined>(undefined)
   const [chainTwo, setChainTwo] = useState<Chain | undefined>(undefined)
-
-  const swapSelections = () => {
-    setChainOne(chainTwo)
-    setChainTwo(chainOne)
-  }
 
   const filteredBridges = useMemo(
     () =>
@@ -29,16 +25,11 @@ export const NetworkSelect: React.FC = () => {
     <>
       <Card>
         <Center py="12">
-          <HStack spacing={4}>
+          <HStack spacing="4">
             <Text>From</Text>
             <ChainPicker selectedChain={chainOne} onSelect={setChainOne} />
-            <IconButton
-              aria-label="Swap"
-              icon={<CgArrowRight />}
-              onClick={swapSelections}
-              variant="unstyled"
-              fontSize="1.5em"
-            />
+
+            <Icon as={CgArrowRight} verticalAlign="middle" fontSize="1.5em" />
 
             <Text>To</Text>
             <ChainPicker selectedChain={chainTwo} onSelect={setChainTwo} />
@@ -48,7 +39,7 @@ export const NetworkSelect: React.FC = () => {
       <Text pt="6" pb="2">
         {filteredBridges.length} bridge{filteredBridges.length === 1 ? '' : 's'}
       </Text>
-      <VStack w="100%">
+      <VStack w="100%" spacing="4">
         {filteredBridges.map((bridge) => (
           <BridgeItem bridge={bridge} key={bridge.name} />
         ))}

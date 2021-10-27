@@ -12,7 +12,8 @@ import {
 import { Card } from 'components/Card'
 import { MotionBox } from 'components/motion/Box'
 import React from 'react'
-import { Bridge, chains } from '../bridges'
+import { Bridge } from '../bridges'
+import { chains } from '../chains'
 
 export const BridgeItem = ({ bridge }: { bridge: Bridge }) => (
   <LinkBox w="100%">

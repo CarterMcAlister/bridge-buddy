@@ -17,7 +17,7 @@ import {
 } from '@chakra-ui/react'
 import { MotionBox } from 'components/motion/Box'
 import React, { useMemo, useState } from 'react'
-import { Chain, chains } from '../bridges'
+import { Chain, chains } from '../chains'
 
 export const ChainPicker = ({
   selectedChain,

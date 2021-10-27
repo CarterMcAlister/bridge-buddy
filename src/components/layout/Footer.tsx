@@ -1,15 +1,15 @@
-import { Flex, Link, Text } from '@chakra-ui/react'
+import { Center, Link, Text } from '@chakra-ui/react'
 
 const Footer = () => {
   return (
-    <Flex as="footer" width="full" align="center">
+    <Center as="footer" width="full" align="center">
       <Text>
-        {new Date().getFullYear()} -{' '}
-        <Link href="https://sznm.dev" isExternal>
-          sznm.dev
+        Created with ❤️ & ☕️ by{' '}
+        <Link href="https://twitter.com/CarterMcAIister" isExternal>
+          Carter McAlister
         </Link>
       </Text>
-    </Flex>
+    </Center>
   )
 }
 
