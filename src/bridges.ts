@@ -1,13 +1,12 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
-import { ChainId } from 'chains'
-
 export interface Bridge {
   name: string
   address: string
   url: string
   logo: string
-  chains: ChainId[]
+  // chains: ChainId[]
+  chains: string[]
 }
 
 export const bridges: Bridge[] = [
