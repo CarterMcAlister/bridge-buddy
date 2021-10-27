@@ -96,7 +96,7 @@ export const bridges: Bridge[] = [
     address: '0x9A8C4bdCd75CFa1059A6E453Ac5cE9d3F5c82A35',
     url: 'https://bnbridge.exchange/',
     logo: 'https://assets.coingecko.com/coins/images/4001/large/Fantom.png',
-    chains: ['ETH', 'BSC', 'XAR', 'FTM'], //FTM OPERA?
+    chains: ['ETH', 'BSC', 'XAR', 'FTM'], // FTM OPERA?
   },
   {
     name: 'Fuse',

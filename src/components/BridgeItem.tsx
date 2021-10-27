@@ -13,7 +13,7 @@ import { Card } from 'components/Card'
 import { MotionBox } from 'components/motion/Box'
 import React from 'react'
 import { Bridge } from '../bridges'
-import { chains } from '../chains'
+import { ChainId, chains } from '../chains'
 
 export const BridgeItem = ({ bridge }: { bridge: Bridge }) => (
   <LinkBox w="100%">
@@ -44,9 +44,9 @@ export const BridgeItem = ({ bridge }: { bridge: Bridge }) => (
           </Text>
           <Wrap>
             {bridge.chains.map((chainSymbol) =>
-              chains[chainSymbol]?.name ? (
+              chains[chainSymbol as ChainId]?.name ? (
                 <WrapItem key={`${bridge.name}-${chainSymbol}`}>
-                  <Tag>{chains[chainSymbol].name}</Tag>
+                  <Tag>{chains[chainSymbol as ChainId].name}</Tag>
                 </WrapItem>
               ) : null
             )}

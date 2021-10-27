@@ -2,7 +2,7 @@ import { Center, Link, Text } from '@chakra-ui/react'
 
 const Footer = () => {
   return (
-    <Center as="footer" width="full" align="center">
+    <Center as="footer" width="full" alignContent="center">
       <Text>
         Created with ❤️ & ☕️ by{' '}
         <Link href="https://twitter.com/CarterMcAIister" isExternal>
