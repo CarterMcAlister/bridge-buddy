@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 const NextSitemapConfig = {
-  siteUrl: 'https://bridge-buddy.vercel.app',
+  siteUrl: 'https://bridgebuddy.vercel.app',
   generateRobotsTxt: true,
 }
 

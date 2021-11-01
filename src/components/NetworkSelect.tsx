@@ -1,15 +1,25 @@
-import { Center, HStack, Icon, Text, VStack } from '@chakra-ui/react'
+import {
+  Box,
+  Center,
+  Icon,
+  Stack,
+  Text,
+  useMediaQuery,
+  VStack,
+} from '@chakra-ui/react'
 import { BridgeItem } from 'components/BridgeItem'
 import { Card } from 'components/Card'
 import { ChainPicker } from 'components/ChainPicker'
 import React, { useMemo, useState } from 'react'
-import { CgArrowRight } from 'react-icons/cg'
+import { CgArrowDown, CgArrowRight } from 'react-icons/cg'
 import { bridges } from '../bridges'
 import { Chain, ChainId } from '../chains'
 
 export const NetworkSelect: React.FC = () => {
   const [chainOne, setChainOne] = useState<Chain | undefined>(undefined)
   const [chainTwo, setChainTwo] = useState<Chain | undefined>(undefined)
+
+  const [isMobile] = useMediaQuery('(max-width: 768px)')
 
   const filteredBridges = useMemo(
     () =>
@@ -25,15 +35,27 @@ export const NetworkSelect: React.FC = () => {
     <>
       <Card>
         <Center py="12">
-          <HStack spacing="4">
-            <Text>From</Text>
-            <ChainPicker selectedChain={chainOne} onSelect={setChainOne} />
-
-            <Icon as={CgArrowRight} verticalAlign="middle" fontSize="1.5em" />
-
-            <Text>To</Text>
-            <ChainPicker selectedChain={chainTwo} onSelect={setChainTwo} />
-          </HStack>
+          <Stack spacing="4" direction={{ base: 'column', md: 'row' }}>
+            <Box>
+              <Text pl="4" pb="1" fontWeight="bold">
+                From
+              </Text>
+              <ChainPicker selectedChain={chainOne} onSelect={setChainOne} />
+            </Box>
+            <Box alignSelf={{ base: 'center', md: 'flex-end' }}>
+              <Icon
+                as={isMobile ? CgArrowDown : CgArrowRight}
+                fontSize="1.5em"
+                mb={{ base: 0, md: '2' }}
+              />
+            </Box>
+            <Box>
+              <Text pl="4" pb="1" fontWeight="bold">
+                To
+              </Text>
+              <ChainPicker selectedChain={chainTwo} onSelect={setChainTwo} />
+            </Box>
+          </Stack>
         </Center>
       </Card>
       <Text pt="6" pb="2">
